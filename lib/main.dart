@@ -4,35 +4,34 @@ void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
   @override
+  State<StatefulWidget> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp>{
+  int _counter = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-        home:Scaffold(
-          body: Stack(
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               Positioned(
-                left: 30,
-                 top: 100,
-                 child:  Container(
-                   height: 80,
-                   width: 260,
-                   color: Colors.blueGrey,
-                   alignment: Alignment.center,
-                   transform: Matrix4.rotationZ(-0.25),
-                   child: const Text(
-                       "Containers!",
-                       style: TextStyle(
-                           color: Colors.white,
-                           fontSize: 25
-                       )
-                   ),
-              ),)
+              Text("Number $_counter"),
+              IconButton(onPressed: (){
+                setState(() => _counter++);
+              }, icon: const Icon(Icons.add))
+
             ],
-          )
-    )
-    ) ;
+          ),
+        ),
+      ),
+    );
   }
+
 }

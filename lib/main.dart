@@ -12,28 +12,17 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home:Scaffold(
-          body: Container(
-            height: 100,
-            width: 100,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [ BoxShadow(
-               color: Colors.grey,
-               spreadRadius: 5,
-               blurRadius: 7 ,
-                offset: Offset(0, 3)
-              )
-              ],
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color.fromARGB(1, 243, 222, 124),
-                  Color.fromARGB(1, 234, 122, 244)
-                ]
-              )
-            ),
-            child: const Center(),
+          body: Stack(
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                ),
+              ),
+              const Text("Hello")
+            ],
           )
     )
     ) ;

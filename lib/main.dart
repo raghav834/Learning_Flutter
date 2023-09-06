@@ -1,37 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatefulWidget {
+class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
-  @override
-  State<StatefulWidget> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp>{
-  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Number $_counter"),
-              IconButton(onPressed: (){
-                setState(() => _counter++);
-              }, icon: const Icon(Icons.add))
-
-            ],
-          ),
+        appBar: AppBar(
+            title: const Text("Flutter"),
+            actions: const [
+              Padding(
+                padding: EdgeInsets.only(right: 20),
+                child: Icon(Icons.info),
+              )
+            ]
+        ),
+        drawer: const Drawer(),
+        body: const Center(
+          child: Text("Wow nice book"),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(Icons.add),
         ),
       ),
     );
   }
-
 }

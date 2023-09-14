@@ -12,25 +12,48 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(),
-        drawer: Drawer(
-          child: ListView(
-            children:  [
-              ListTile(
-                leading: const Icon(Icons.people),
-                title: const Text("Item 1"),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: const Icon(Icons.train),
-                title: const Text("Item 2"),
-                onTap: () {},
-              )
-            ],
-          ),
+        body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints sizes){
+            if(sizes.maxWidth < 600) {
+              return const ListData();
+            }
+            return const GridData();
+          },
         ),
-        endDrawer: const Drawer(),
       ),
     );
   }
+}
+
+class ListData extends StatelessWidget{
+
+  const ListData({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(itemBuilder: (context,id) {
+      return ListTile(
+        leading: const Icon(Icons.add_box),
+        title: Text("Item $id"),
+      );
+    });
+  }
+}
+
+class GridData extends StatelessWidget{
+
+  const GridData({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return GridView.count(crossAxisCount: 2,
+    children: List.generate(100, (index){
+      return ListTile(
+          leading: const Icon(Icons.add_box),
+          title: Text("Item $index"),
+        );
+    }),);
+
+  }
+
 }
